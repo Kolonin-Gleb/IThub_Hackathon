@@ -38,7 +38,7 @@
     color: #bfc4d1;
 }
 
-.filters-block button {
+.filters-block button, .btn {
     width: 100%;
     font-size: 18px;
     color: white;
@@ -47,6 +47,77 @@
     border-radius: var(--border-radius);
     text-align: center;
     padding: 10px 20px;
-} .filters-block button:active {
+} .filters-block button:active, .btn:active {
     background: rgb(25, 121, 235);
 }
+
+.search-result {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-result .caption {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-result .caption a {
+    width: fit-content;
+}
+
+.messages {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.message {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: black;
+    border: 1px solid var(--bg-dark);
+    border-radius: var(--border-radius);
+    transition: all .3s;
+} .message:hover {
+    border-color: var(--color);
+    box-shadow: 0 0 0 4px rgba(45, 141, 255, .2);
+}
+
+.message:nth-child(1) {
+    background: none;
+    border: none;
+} .message:nth-child(1):hover {
+    border: none;
+    box-shadow: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.msg-desc {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+    color: black;
+}
+
+.message div:nth-child(1) {width: 60%;}
+.message div:nth-child(2) {width: 20%;}
+.message div:nth-child(3) {width: 20%;}

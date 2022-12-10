@@ -1,0 +1,564 @@
+Delivered-To: im@imkr.pro
+Received: by 2002:a05:6a20:bf03:b0:a3:8bd4:1f66 with SMTP id gc3csp5938787pzb;
+        Sat, 26 Nov 2022 01:01:28 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5iPr8afaN5YjYUtVDFVTpxoLoGlUdHScfdCdiG1xOgtHH19+AlwUkiDn5hpXl5eRvAZQBj
+X-Received: by 2002:a05:651c:50e:b0:277:1c8d:27b9 with SMTP id o14-20020a05651c050e00b002771c8d27b9mr9830151ljp.210.1669453288157;
+        Sat, 26 Nov 2022 01:01:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669453288; cv=none;
+        d=google.com; s=arc-20160816;
+        b=jQtms5kIB75Zt9EwPrcLB8ZLElMUeSgjB9gZykSUPwII3Eu9AgxWIHQm6AnAvCGa2o
+         1J9n65oicvqZLxtuGLL7oxHMgTZHzRYbjWDXhUdpB/4kIVyxA10qtaNtWf1xNUnOEiSI
+         AUhxv782VOHS+kHW12ssHsubrIFGkDs6kGPBcVdq0+7mn3atVa8xSPeL6RPPfAQ0SUda
+         jAqVuPpHnm+rUxGpMsJQp1nu0wyG/oozXmwKJ1/UvF8bDW1npU59/rXLQ7jtGLxN9xlK
+         vCl6VrmxmMAZLGRb7m0J3vQZVyayfcYBnuB9fLufvaItH9Q5JhY0fxLLRWvzWT7I1VTZ
+         /TbA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:subject:message-id:mime-version:to:date:from
+         :dkim-signature;
+        bh=CZHJB8avMnQHvbEL65iKmJNUf45a2qWvkO+eVOU0crI=;
+        b=l7PxK3vicbebpcDV+10CCGqjcPDznqSMA8X8kHgHptRheygSMD1bLo+brmMYVC71kG
+         adGtMPoQjO6pyhcmFfK+7fJRDc2+CBMsg/2+53MJOc9akaKt5F/xzkYkiAWyJuu23Lxi
+         DXy2ZZSlpmchZYBC6SdbR0evRMVX4ytAKS7ivuePsSfu0/AnrsDj5zd+Ab9LX2nqAJyf
+         lAICCZ+yMnRjtUWZnKGgGSFvvY62OJefzwsCHFu+taFJZBgZ4xMXd8uidhhbWsr4EJDZ
+         vR8a9LjotfpN/Y/5UgqCGRwiIEdBxdYMdbcS93hklp7Jh2v8ndeZTfsVWlokP0jX6O+Z
+         UuBQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kvtservice.su header.s=dkim header.b=LSrrUXR2;
+       spf=softfail (google.com: domain of transitioning prihod@kvtservice.su does not designate 2a03:6f00:5:1::27f8 as permitted sender) smtp.mailfrom=prihod@kvtservice.su;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kvtservice.su
+Return-Path: <prihod@kvtservice.su>
+Received: from mail.kvtservice.su ([2a03:6f00:5:1::27f8])
+        by mx.google.com with ESMTPS id d15-20020a2e96cf000000b0027701009636si3322086ljj.120.2022.11.26.01.01.27
+        for <im@imkr.pro>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 26 Nov 2022 01:01:28 -0800 (PST)
+Received-SPF: softfail (google.com: domain of transitioning prihod@kvtservice.su does not designate 2a03:6f00:5:1::27f8 as permitted sender) client-ip=2a03:6f00:5:1::27f8;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@kvtservice.su header.s=dkim header.b=LSrrUXR2;
+       spf=softfail (google.com: domain of transitioning prihod@kvtservice.su does not designate 2a03:6f00:5:1::27f8 as permitted sender) smtp.mailfrom=prihod@kvtservice.su;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kvtservice.su
+Received: from mail.kvtservice.su (mx.kvtservice.su [127.0.0.1])
+	by mail.kvtservice.su (Postfix) with ESMTP id 4NK5Lv0PlTz5xhb
+	for <im@imkr.pro>; Sat, 26 Nov 2022 12:01:27 +0300 (MSK)
+Authentication-Results: mail.kvtservice.su (amavisd-new);
+	dkim=pass (2048-bit key) reason="pass (just generated, assumed good)"
+	header.d=kvtservice.su
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kvtservice.su; h=
+	user-agent:subject:message-id:mime-version:to:date:content-type
+	:from; s=dkim; t=1669453285; x=1672045286; bh=No7YyIqrAehjA1h8PD
+	FnjBe+YS7MB2NwfNxsZzy3YbI=; b=LSrrUXR2a3k1bxzZ7986BU815aqZRNtlVe
+	UgTFwWw5Q4/BA+s+KixSRpUu1qrC/MRNLdn64n5sak6rrn6adQlb+uOvAa0alknO
+	zGzEsLBdIJjFj7Ae0L89qrdlArqZ1IA3y2zJhCq5P/Y0A5c+HmNkoqNoY8U7Sd7I
+	TwuyCuBAZIS2bpzfGTEg1y1nCabPJTC0oCM5EctyrbYONHll6dw6jEdXvJ8ih7md
+	f3hj23j+CNNjlRVJ4V+imFLJrE+2uZFrSJdWVnOpHBbLOeNq2PoVJSYOv42zP9zT
+	2Vf1pPAUGE0u9h52Fm0I8fonRSXJbWzU+ImkICBlPlt6nGAhxhlQ==
+X-Virus-Scanned: Debian amavisd-new at mail.kvtservice.su
+Received: from mail.kvtservice.su ([127.0.0.1])
+	by mail.kvtservice.su (mail.kvtservice.su [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id kbvSb2xzH3Hu for <im@imkr.pro>;
+	Sat, 26 Nov 2022 12:01:25 +0300 (MSK)
+Received: from mx.kvtservice.su (mx.kvtservice.su [127.0.0.1])
+	by mail.kvtservice.su (Postfix) with ESMTPSA id 4NK5Ls64QWz5xhQ
+	for <im@imkr.pro>; Sat, 26 Nov 2022 12:01:25 +0300 (MSK)
+From: =?utf-8?q?=D0=9F=D1=80=D0=B8=D1=85=D0=BE=D0=B4_=D0=9A=D0=92=D0=A2?= <prihod@kvtservice.su>
+Content-Type: multipart/mixed; boundary="----=_=-_OpenGroupware_org_NGMime-1172-1669453285.811666-7------"
+X-Forward: 213.183.244.50, 186.2.160.243
+Date: Sat, 26 Nov 2022 04:01:25 -0500
+To: im@imkr.pro
+MIME-Version: 1.0
+Message-ID: <494-6381d600-7-3a5c9b80@100201711>
+Subject: =?utf-8?q?=D0=9F=D0=B8=D1=81=D1=8C=D0=BC=D0=B0?==?utf-8?q?_=D1=81?=
+ =?utf-8?q?_=D0=A1=D0=92=D0=A5?=
+User-Agent: SOGoMail 5.5.1
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811666-7------
+Content-Type: multipart/alternative; boundary="----=_=-_OpenGroupware_org_NGMime-1172-1669453285.811201-6------"
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811201-6------
+Content-Type: text/plain; charset=utf-8
+
+
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811201-6------
+Content-Type: text/html; charset=utf-8
+Content-Length: 13
+
+<html></html>
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811201-6--------
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811666-7------
+Content-Type: message/rfc822
+Content-Disposition: inline; filename="=?utf-8?q?<-=5F=D0=92=D1=8B=D0=B5=D0=B7=D0=B4=5F=D0=B0=5F=D0=BC=5F=D0=B8=D0=B7=5F=D0=A1=D0=92=D0=A5=5F=5F=D0=90=D0=BB=D1=8C=D1=84=D0=B0-=D0=A2=D1=80=D0=B0=D0=BD=D1=81=5F=5F=5F(=D0=B0=D0=BA=D1=86=D0=B8=D0=B7)=5F=5F(=D0=B0=5F=D0=BC=5FA911BO67=5FFR425).eml?="
+Content-Length: 2513
+Content-Transfer-Encoding: 7bit
+
+Return-Path: <no-reply@alfa-trans-smolensk.ru>
+Delivered-To: prihod@kvtservice.su
+Received: from mail.kvtservice.su (mx.kvtservice.su [127.0.0.1])
+	by mail.kvtservice.su (Postfix) with ESMTP id 4NGpJ21Kblz5xhN
+	for <prihod@kvtservice.su>; Tue, 22 Nov 2022 18:36:02 +0300 (MSK)
+X-Virus-Scanned: Debian amavisd-new at mail.kvtservice.su
+Authentication-Results: mail.kvtservice.su (amavisd-new); dkim=neutral
+	reason="invalid (public key: not available)"
+	header.d=alfa-trans-smolensk.ru
+Received: from mail.kvtservice.su ([127.0.0.1])
+	by mail.kvtservice.su (mail.kvtservice.su [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4D-AaNVaJkrd for <prihod@kvtservice.su>;
+	Tue, 22 Nov 2022 18:35:58 +0300 (MSK)
+Received: from mail.alfa-trans-smolensk.ru (mail.alfa-trans-smolensk.ru [212.3.154.165])
+	by mail.kvtservice.su (Postfix) with ESMTP id 4NGpHy1Rxkz5xgT;
+	Tue, 22 Nov 2022 18:35:58 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple;
+	d=alfa-trans-smolensk.ru; s=MDaemon; t=1669131348; x=1669736148;
+	i=no-reply@alfa-trans-smolensk.ru; q=dns/txt; h=From:Subject:
+	Content-Type:Date; bh=7KUzdapJ0s/XFzOnJsMwS8Rz3Z1AQU0yYAoCP6By9Z
+	I=; b=veg7EEUaOpZqVdkLlzS8B23e7pv3xMTSiYOLCVlR9ZKObWVns/DqOCw3on
+	fUPZqfuQGJANz4dD0eoq/eurKp/gkZ+My0dYDBubNSUKHgm4KANVo3jIrDNM5taD
+	cqOPxP67uNEIbz6meMI+8Xm9lDYXhTPaTW7OeolB1zkc7SOA0rZ4OBAhanubxTT/
+	y+ou9MFkAf5XW+h+kb7AUlvd3XlZ7j1pDY4GkAywctUCM2d9eHQ/beMLVk3G0GBi
+	pdesK8UVOnU1hJ4DFwE4MzO9RC62oGB18+7iCv76mMMR/HKxpzjFAKO3GLGyafmI
+	YTGh3wxiZHUtizt0q7j/BESfFsdA==
+Received: from disp-exc-in by mail.alfa-trans-smolensk.ru (212.3.154.165) with ESMTPA id md50000097781.msg; 
+	Tue, 22 Nov 2022 18:35:47 +0300
+X-Spam-Processed: mail.alfa-trans-smolensk.ru, Tue, 22 Nov 2022 18:35:47 +0300
+	(not processed: message from trusted or authenticated source)
+X-MDArrival-Date: Tue, 22 Nov 2022 18:35:47 +0300
+X-Authenticated-Sender: no-reply@alfa-trans-smolensk.ru
+X-Return-Path: no-reply@alfa-trans-smolensk.ru
+X-Envelope-From: no-reply@alfa-trans-smolensk.ru
+From: "no-reply@alfa-trans-smolensk.ru" <no-reply@alfa-trans-smolensk.ru>
+Subject: <-
+ =?windows-1251?B?wvvl5+Qg4C/sIOjnINHC1SAiwOv89OAt0vDg7fEiICAo4Or26OcpICAo?=
+ =?windows-1251?B?4C/s?= A911BO67/FR425)
+Content-Type: text/plain; charset=windows-1251
+Date: Tue, 22 Nov 2022 18:33:13 +0300
+X-MDCFSigsAdded: alfa-trans-smolensk.ru
+Message-Id: <4NGpJ21Kblz5xhN@mail.kvtservice.su>
+
+Автоматическое уведомление.
+
+
+Выезд а/м из СВХ "Альфа-Транс". 
+
+А/м   : A911BO67/FR425
+
+Выезд : 22.11.2022 18:33
+
+Получатель: СЕМЁРКА СТИЛЬ
+
+
+
+
+
+
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811666-7------
+Content-Type: message/rfc822
+Content-Disposition: inline; filename="=?utf-8?q?->=5F=D0=92=D1=8A=D0=B5=D0=B7=D0=B4=5F=D0=B0=5F=D0=BC=5F=D0=BD=D0=B0=5F=D0=A1=D0=92=D0=A5=5F=5F=D0=90=D0=BB=D1=8C=D1=84=D0=B0-=D0=A2=D1=80=D0=B0=D0=BD=D1=81=5F=5F(=D0=B0=5F=D0=BC=5FO280PX39=5FDD484).eml?="
+Content-Length: 2474
+Content-Transfer-Encoding: 7bit
+
+Return-Path: <no-reply@alfa-trans-smolensk.ru>
+Delivered-To: prihod@kvtservice.su
+Received: from mail.kvtservice.su (mx.kvtservice.su [127.0.0.1])
+	by mail.kvtservice.su (Postfix) with ESMTP id 4NHC0b6jxvz5xhS
+	for <prihod@kvtservice.su>; Wed, 23 Nov 2022 10:09:03 +0300 (MSK)
+X-Virus-Scanned: Debian amavisd-new at mail.kvtservice.su
+Authentication-Results: mail.kvtservice.su (amavisd-new); dkim=neutral
+	reason="invalid (public key: not available)"
+	header.d=alfa-trans-smolensk.ru
+Received: from mail.kvtservice.su ([127.0.0.1])
+	by mail.kvtservice.su (mail.kvtservice.su [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rtVuKui-UyUK for <prihod@kvtservice.su>;
+	Wed, 23 Nov 2022 10:09:03 +0300 (MSK)
+Received: from mail.alfa-trans-smolensk.ru (mail.alfa-trans-smolensk.ru [212.3.154.165])
+	by mail.kvtservice.su (Postfix) with ESMTP id 4NHC0Z6cyKz5xhH;
+	Wed, 23 Nov 2022 10:09:02 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple;
+	d=alfa-trans-smolensk.ru; s=MDaemon; t=1669187342; x=1669792142;
+	i=no-reply@alfa-trans-smolensk.ru; q=dns/txt; h=From:Subject:
+	Content-Type:Date; bh=aNinaIiBc3A2XUQFnX/EhtGDkQn/sAUCfxl9Nfz8Nk
+	E=; b=QY8XncKUwySTP9ITTXdhc+CKXaFCsAaDJKTsw19TH6D5POUJjDv4ptzKt6
+	JyWzBM4PL3+M0Y+Q5rB8UF/Yznhwbx9a+Xyxy6IQcUf7dP2ItGGvpgAVPVF8Oird
+	3NVhHkr9KmqPSn87afoPPpZjYPLAWCV95a8Wg0TQVJDJrwgha/n9NMF+wgMM3xRs
+	N8oobby3nLcK0g9S/pbunktkfkaUH1wLBQvhRY2TLzHYVFO90VXnd7p7qX9/0qsu
+	bbmITRAeS3GdsJffUS+S2/v/Di5wjgMGxuRNnMm9G9mMdVee0R31PstS4c/pB8fR
+	wu6J3kbWwjEj7azkbblo8ULneiRA==
+Received: from st71 by mail.alfa-trans-smolensk.ru (212.3.154.165) with ESMTPA id md50000098734.msg; 
+	Wed, 23 Nov 2022 10:09:00 +0300
+X-Spam-Processed: mail.alfa-trans-smolensk.ru, Wed, 23 Nov 2022 10:09:00 +0300
+	(not processed: message from trusted or authenticated source)
+X-MDArrival-Date: Wed, 23 Nov 2022 10:09:00 +0300
+X-Authenticated-Sender: no-reply@alfa-trans-smolensk.ru
+X-Return-Path: no-reply@alfa-trans-smolensk.ru
+X-Envelope-From: no-reply@alfa-trans-smolensk.ru
+From: "no-reply@alfa-trans-smolensk.ru" <no-reply@alfa-trans-smolensk.ru>
+Subject: ->
+ =?windows-1251?B?wvrl5+Qg4C/sIO3gINHC1SAiwOv89OAt0vDg7fEiICjgL+w=?=
+ O280PX39/DD484)
+Content-Type: text/plain; charset=windows-1251
+Date: Wed, 23 Nov 2022 10:06:17 +0300
+X-MDCFSigsAdded: alfa-trans-smolensk.ru
+Message-Id: <4NHC0b6jxvz5xhS@mail.kvtservice.su>
+
+Автоматическое уведомление.
+
+
+Въезд а/м на СВХ "Альфа-Транс". 
+
+А/м   : O280PX39/DD484
+
+Въезд : 23.11.2022 03:41
+
+Получатель: СЕМЁРКА СТИЛЬ
+
+
+
+
+
+
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811666-7------
+Content-Type: message/rfc822
+Content-Disposition: inline; filename="=?utf-8?q?=D0=98=D0=B7=D0=B2=D0=B5=D1=89=D0=B5=D0=BD=D0=B8=D0=B5.eml?="
+Content-Length: 2008
+Content-Transfer-Encoding: 7bit
+
+Return-Path: <auto@ost-term.ru>
+Delivered-To: prihod@kvtservice.su
+Received: from mail.kvtservice.su (mx.kvtservice.su [127.0.0.1])
+	by mail.kvtservice.su (Postfix) with ESMTP id 4NHtZK0cSFz5w4j
+	for <prihod@kvtservice.su>; Thu, 24 Nov 2022 12:52:09 +0300 (MSK)
+X-Virus-Scanned: Debian amavisd-new at mail.kvtservice.su
+Received: from mail.kvtservice.su ([127.0.0.1])
+	by mail.kvtservice.su (mail.kvtservice.su [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id H_mnUL11a-lW for <prihod@kvtservice.su>;
+	Thu, 24 Nov 2022 12:52:08 +0300 (MSK)
+Received: from spl90.hosting.reg.ru (spl90.hosting.reg.ru [31.31.198.204])
+	by mail.kvtservice.su (Postfix) with ESMTPS id 4NHtZJ01qBz5w4C
+	for <prihod@kvtservice.su>; Thu, 24 Nov 2022 12:52:07 +0300 (MSK)
+Received: from ALTA-SVH-REAL (89.249.252.140.mosline.ru [89.249.252.140])
+	(Authenticated sender: auto@ost-term.ru)
+	by spl90.hosting.reg.ru (Postfix) with ESMTPA id EAC2D31A2E75;
+	Thu, 24 Nov 2022 12:52:06 +0300 (MSK)
+MIME-Version: 1.0
+From: auto@ost-term.ru
+To: kvtmozhaysk@gmail.com, germes777@list.ru, prihod@kvtservice.su
+Date: 24 Nov 2022 12:52:06 +0300
+Subject: =?utf-8?B?0JjQt9Cy0LXRidC10L3QuNC1?=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
+X-PPP-Message-ID: 
+ <166928352732.10546.9896898963665283157@spl90.hosting.reg.ru>
+X-PPP-Vhost: ost-term.ru
+Message-Id: <4NHtZK0cSFz5w4j@mail.kvtservice.su>
+
+0KPQstCw0LbQsNC10LzRi9C5INCa0LvQuNC10L3RgiDQsiDQsNC00YDQtdGBINGE0LjR
+gNC80Ysg0J7QntCeICLQk9CQ0JzQnNCQ0KHQldCg0JLQmNChIiDQsiAyNC4xMS4yMDIy
+IDEyOjQyINC/0YDQuNCx0YvQuyDQsNCy0YLQvtC80L7QsdC40LvRjCDihJYgQU0yMjkx
+MS9BNTA1MEUxDQog0J/QvtGB0LvQtSDRgtCw0LzQvtC20LXQvdC90L7Qs9C+INC+0YTQ
+vtGA0LzQu9C10L3QuNGPLCDQktGL0L/Rg9GJ0LXQvdC90YPRjiDQlNCiICgxINC70LjR
+gdGCKSDQvdC10L7QsdGF0L7QtNC40LzQviDQv9GA0LjRgdC70LDRgtGMINC90LAg0Y3Q
+u9C10LrRgtGA0L7QvdC90YvQuSDQsNC00YDQtdGBICB2eXB1c2tAb3N0LXRlcm0ucnUN
+CiDQodC10YDQstC40YEg0LDQstGC0L7QvNCw0YLQuNGH0LXRgdC60L7Qs9C+INC+0L/Q
+vtCy0LXRidC10L3QuNGPINCe0J7QniDQntCh0KIt0KLQldCg0JzQmNCd0JDQmw==
+
+
+
+
+
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811666-7------
+Content-Type: message/rfc822
+Content-Disposition: inline; filename="=?utf-8?q?=D0=98=D0=BD=D1=84=D0=BE=D1=80=D0=BC=D0=B0=D1=86=D0=B8=D1=8F=5F=D0=BE=D1=82=5F=D0=93=D0=9A=5F=D0=A1=D0=B5=D0=B2=D0=B5=D1=80=D1=82=D1=80=D0=B0=D0=BD=D1=81=5F=D0=BE=5F=D0=B7=D0=B0=D0=BA=D0=B0=D0=B7=D0=B5=5F1255829-1.eml?="
+Content-Length: 6459
+Content-Transfer-Encoding: 7bit
+
+Return-Path: <info1@severtrans.ru>
+Delivered-To: prihod@kvtservice.su
+Received: from mail.kvtservice.su (mx.kvtservice.su [127.0.0.1])
+	by mail.kvtservice.su (Postfix) with ESMTP id 4NBMgy5TYlz5xgS
+	for <prihod@kvtservice.su>; Tue, 15 Nov 2022 13:22:54 +0300 (MSK)
+X-Virus-Scanned: Debian amavisd-new at mail.kvtservice.su
+Received: from mail.kvtservice.su ([127.0.0.1])
+	by mail.kvtservice.su (mail.kvtservice.su [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5xQxYdP_kw1V for <prihod@kvtservice.su>;
+	Tue, 15 Nov 2022 13:22:51 +0300 (MSK)
+Received: from mx.severtrans.ru (mx.severtrans.ru [212.13.97.196])
+	by mail.kvtservice.su (Postfix) with ESMTPS id 4NBMgv0k9Rz5xKp
+	for <prihod@kvtservice.su>; Tue, 15 Nov 2022 13:22:50 +0300 (MSK)
+Received: from mbx.severtrans.ru (192.168.3.13) by srv-exchange-02.kvt.local
+ (192.168.1.22) with Microsoft SMTP Server (TLS) id 15.0.1263.5; Tue, 15 Nov
+ 2022 13:22:48 +0300
+From: <info1@severtrans.ru>
+To: <prihod@kvtservice.su>
+Subject: =?WINDOWS-1251?B?yO307vDs4Pbo/yDu8iDDyiDR5eLl8PLw4O3xIO4g5+Dq4OflIDEyNTU4Mjk=?=
+Date: Tue, 15 Nov 2022 13:23:03 +0400
+MIME-Version: 1.0
+Content-Type: text/html; charset="windows-1251"
+Content-Transfer-Encoding: quoted-printable
+X-Priority: 2
+Message-ID: <f5e64dbcc7554973af56b2713192209f@srv-exchange-02.kvt.local>
+X-Originating-IP: [192.168.3.13]
+X-ClientProxiedBy: srv-exchange-02.kvt.local (192.168.1.22) To
+ srv-exchange-02.kvt.local (192.168.1.22)
+
+<html>=0A=
+<head>=0A=
+<meta http-equiv=3D"Content-Language" content=3D"ru">=0A=
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dwindows-1=
+251">=0A=
+<title>=C8=ED=F4=EE=F0=EC=E0=F6=E8=EE=ED=ED=EE=E5 =F1=EE=EE=E1=F9=E5=ED=E8=
+=E5 =C3=CA =D1=E5=E2=E5=F0=D2=F0=E0=ED=F1</title>=0A=
+</head>=0A=
+<table border=3D"1" width=3D"99%" cellspacing=3D"0" cellpadding=3D"0" heigh=
+t=3D"1"=0A=
+       bordercolor=3D"olive" bgcolor=3D"#F7F4EE">=0A=
+<tr>=0A=
+   <td width=3D"60%" height=3D"50" rowspan=3D"2" colspan=3D"6" bgcolor=3D"#=
+FFFFFF">=0A=
+     <p style=3D"margin-left:7;margin-top:4;margin-bottom:5">=0A=
+        =C2=ED=E8=EC=E0=ED=E8=FE =EA=EB=E8=E5=ED=F2=E0&nbsp;&nbsp;&nbsp;<fo=
+nt color=3D"blue"><b id=3D"client_id">2201</b></font><br></p>=0A=
+              =CF=EE=EB=F3=F7=E0=F2=E5=EB=FC&nbsp;<font color=3D"blue"><b i=
+d=3D"pol_id">=CE=CE=CE =AB=D0=E8=F2=E5=F2=BB</b></font><br></p>=0A=
+     <p style=3D"margin-left:7;margin-top:4;margin-bottom:5">=0A=
+        =C8=ED=F4=EE=F0=EC=E0=F6=E8=FF =EE=E1 =E8=F1=EF=EE=EB=ED=E5=ED=E8=
+=E8 =E7=E0=EA=E0=E7=E0&nbsp;=B9&nbsp;&nbsp;<font color=3D"blue"><b id=3D"or=
+der_id">1255829</b></font><br></p>=0A=
+     <p style=3D"margin-left:7;margin-top:4;margin-bottom:5">=0A=
+        =D2=C8=D0 =B9&nbsp;&nbsp;<font color=3D"blue"><b id=3D"TIR">1031711=
+0/121122/0014582</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0A=
+        =E0/=EC =B9&nbsp;&nbsp;<font color=3D"blue"><b id=3D"amRegNumb">O03=
+3PM123/MA672023</b></font>=0A=
+   </td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small>=0A=
+      =D0=E5=E3=E8=F1=F2=F0=E0=F6=E8=FF =EF=F0=E8=E1=FB=F2=E8=FF =D2=D1<br>=
+&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small>=0A=
+      =C2=FA=E5=E7=E4 =D2=D1 =ED=E0 =D1=CF</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small>=0A=
+      =C2=FB=E5=E7=E4 =D2=D1 =F1 =D1=CF</small></td>=0A=
+</tr>=0A=
+<tr>=0A=
+   <td width=3D"10%" height=3D"8" align=3D"center"><small id=3D"loading">15=
+.11.2022<br>12:02</small></td>=0A=
+   <td width=3D"10%" height=3D"8" align=3D"center"><small id=3D"fromCust">&=
+nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"8" align=3D"center"><small id=3D"CustTrans">=
+&nbsp;</small></td>=0A=
+</tr>=0A=
+<tr>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+      =CF=F0=E8=E5=EC<br>=E4=EE=EA=F3=EC=E5=ED=F2=EE=E2<br>=E4=EB=FF =C4=D2=
+</small></td>=0A=
+   <td width=3D"20%" height=3D"50" colspan=3D"2" align=3D"center"><small>=
+=0A=
+      =C4=E5=EA=EB=E0=F0=E8=F0=EE=E2=E0=ED=E8=E5<br>&nbsp;</small></td>=0A=
+   <td width=3D"20%" height=3D"50" colspan=3D"2" align=3D"center"><small>=
+=0A=
+      =D2=E0=EC=EE=E6=E5=ED=ED=EE=E5<br>=EE=F4=EE=F0=EC=EB=E5=ED=E8=E5 =C4=
+=D2</small></td>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+      =C7=E0=E2=E5=F0=F8=E5=ED=E8=E5<br>=F2=E0=EC=EE=E6=E5=ED=ED=EE=E3=EE<b=
+r>=F2=F0=E0=ED=E7=E8=F2=E0</small></td>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+       =C7=E0=E2=E5=F0=F8=E5=ED=E8=E5<br>=F2=E0=EC=EE=E6=E5=ED=ED=EE=E3=EE<=
+br>=EE=F4=EE=F0=EC=EB=E5=ED=E8=FF</small></td>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+      =CF=F0=E8=E1=FB=F2=E8=E5<br>=E0/=EC<br>&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+       =C2=FB=E4=E0=F7=E0<br>=E3=F0=F3=E7=E0<br>=EA=EB=E8=E5=ED=F2=F3</smal=
+l></td>=0A=
+</tr>=0A=
+<tr>=0A=
+   <td width=3D"10%" height=3D"8" align=3D"center"><small>=ED=E0=F7=E0=EB=
+=EE</small></td>=0A=
+   <td width=3D"9%" height=3D"1" align=3D"center"><small>=EE=EA=EE=ED=F7=E0=
+=ED=E8=E5</small></td>=0A=
+   <td width=3D"10%" height=3D"1" align=3D"center"><small>=ED=E0=F7=E0=EB=
+=EE</small></td>=0A=
+   <td width=3D"9%" height=3D"1" align=3D"center"><small>=EE=EA=EE=ED=F7=E0=
+=ED=E8=E5</small></td>=0A=
+</tr>=0A=
+<tr>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"DocAccept"=
+>&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"DeclStart"=
+>&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"DeclFinish=
+">&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CustClearS=
+tart">&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CustClearF=
+inish">&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"DeclFinish=
+">15.11.2022<br>12:16</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CustClearD=
+one">&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CarArrival=
+">14.11.2022<br>20:48</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CagroIssue=
+">&nbsp;</small></td>=0A=
+</tr>=0A=
+</table><br><small>=CD=E0=F8 =F1=E0=E9=F2 <a href=3D"http://www.severtrans.=
+ru">www.severtrans.ru</a></small>=0A=
+</html>
+
+
+
+
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811666-7------
+Content-Type: message/rfc822
+Content-Disposition: inline; filename="=?utf-8?q?=D0=98=D0=BD=D1=84=D0=BE=D1=80=D0=BC=D0=B0=D1=86=D0=B8=D1=8F=5F=D0=BE=D1=82=5F=D0=93=D0=9A=5F=D0=A1=D0=B5=D0=B2=D0=B5=D1=80=D1=82=D1=80=D0=B0=D0=BD=D1=81=5F=D0=BE=5F=D0=B7=D0=B0=D0=BA=D0=B0=D0=B7=D0=B5=5F1255829.eml?="
+Content-Length: 6476
+Content-Transfer-Encoding: 7bit
+
+Return-Path: <info1@severtrans.ru>
+Delivered-To: prihod@kvtservice.su
+Received: from mail.kvtservice.su (mx.kvtservice.su [127.0.0.1])
+	by mail.kvtservice.su (Postfix) with ESMTP id 4NDKLW3fr6z5xgq
+	for <prihod@kvtservice.su>; Fri, 18 Nov 2022 17:44:35 +0300 (MSK)
+X-Virus-Scanned: Debian amavisd-new at mail.kvtservice.su
+Received: from mail.kvtservice.su ([127.0.0.1])
+	by mail.kvtservice.su (mail.kvtservice.su [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id d861sTwsWGee for <prihod@kvtservice.su>;
+	Fri, 18 Nov 2022 17:44:34 +0300 (MSK)
+Received: from mx.severtrans.ru (mx.severtrans.ru [212.13.97.196])
+	by mail.kvtservice.su (Postfix) with ESMTPS id 4NDKLV40ncz5xgp
+	for <prihod@kvtservice.su>; Fri, 18 Nov 2022 17:44:34 +0300 (MSK)
+Received: from mbx.severtrans.ru (192.168.3.13) by srv-exchange-02.kvt.local
+ (192.168.1.22) with Microsoft SMTP Server (TLS) id 15.0.1263.5; Fri, 18 Nov
+ 2022 17:44:34 +0300
+From: <info1@severtrans.ru>
+To: <prihod@kvtservice.su>
+Subject: =?WINDOWS-1251?B?yO307vDs4Pbo/yDu8iDDyiDR5eLl8PLw4O3xIO4g5+Dq4OflIDEyNTU4Mjk=?=
+Date: Fri, 18 Nov 2022 17:44:49 +0400
+MIME-Version: 1.0
+Content-Type: text/html; charset="windows-1251"
+Content-Transfer-Encoding: quoted-printable
+X-Priority: 2
+Message-ID: <0e3641c269e4456ebcffc6710e2e5ccd@srv-exchange-02.kvt.local>
+X-Originating-IP: [192.168.3.13]
+X-ClientProxiedBy: srv-exchange-01.kvt.local (192.168.1.21) To
+ srv-exchange-02.kvt.local (192.168.1.22)
+
+<html>=0A=
+<head>=0A=
+<meta http-equiv=3D"Content-Language" content=3D"ru">=0A=
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dwindows-1=
+251">=0A=
+<title>=C8=ED=F4=EE=F0=EC=E0=F6=E8=EE=ED=ED=EE=E5 =F1=EE=EE=E1=F9=E5=ED=E8=
+=E5 =C3=CA =D1=E5=E2=E5=F0=D2=F0=E0=ED=F1</title>=0A=
+</head>=0A=
+<table border=3D"1" width=3D"99%" cellspacing=3D"0" cellpadding=3D"0" heigh=
+t=3D"1"=0A=
+       bordercolor=3D"olive" bgcolor=3D"#F7F4EE">=0A=
+<tr>=0A=
+   <td width=3D"60%" height=3D"50" rowspan=3D"2" colspan=3D"6" bgcolor=3D"#=
+FFFFFF">=0A=
+     <p style=3D"margin-left:7;margin-top:4;margin-bottom:5">=0A=
+        =C2=ED=E8=EC=E0=ED=E8=FE =EA=EB=E8=E5=ED=F2=E0&nbsp;&nbsp;&nbsp;<fo=
+nt color=3D"blue"><b id=3D"client_id">2201</b></font><br></p>=0A=
+              =CF=EE=EB=F3=F7=E0=F2=E5=EB=FC&nbsp;<font color=3D"blue"><b i=
+d=3D"pol_id">=CE=CE=CE =AB=D0=E8=F2=E5=F2=BB</b></font><br></p>=0A=
+     <p style=3D"margin-left:7;margin-top:4;margin-bottom:5">=0A=
+        =C8=ED=F4=EE=F0=EC=E0=F6=E8=FF =EE=E1 =E8=F1=EF=EE=EB=ED=E5=ED=E8=
+=E8 =E7=E0=EA=E0=E7=E0&nbsp;=B9&nbsp;&nbsp;<font color=3D"blue"><b id=3D"or=
+der_id">1255829</b></font><br></p>=0A=
+     <p style=3D"margin-left:7;margin-top:4;margin-bottom:5">=0A=
+        =D2=C8=D0 =B9&nbsp;&nbsp;<font color=3D"blue"><b id=3D"TIR">1031711=
+0/121122/0014582</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0A=
+        =E0/=EC =B9&nbsp;&nbsp;<font color=3D"blue"><b id=3D"amRegNumb">O03=
+3PM123/MA672023</b></font>=0A=
+   </td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small>=0A=
+      =D0=E5=E3=E8=F1=F2=F0=E0=F6=E8=FF =EF=F0=E8=E1=FB=F2=E8=FF =D2=D1<br>=
+&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small>=0A=
+      =C2=FA=E5=E7=E4 =D2=D1 =ED=E0 =D1=CF</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small>=0A=
+      =C2=FB=E5=E7=E4 =D2=D1 =F1 =D1=CF</small></td>=0A=
+</tr>=0A=
+<tr>=0A=
+   <td width=3D"10%" height=3D"8" align=3D"center"><small id=3D"loading">15=
+.11.2022<br>12:02</small></td>=0A=
+   <td width=3D"10%" height=3D"8" align=3D"center"><small id=3D"fromCust">&=
+nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"8" align=3D"center"><small id=3D"CustTrans">=
+&nbsp;</small></td>=0A=
+</tr>=0A=
+<tr>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+      =CF=F0=E8=E5=EC<br>=E4=EE=EA=F3=EC=E5=ED=F2=EE=E2<br>=E4=EB=FF =C4=D2=
+</small></td>=0A=
+   <td width=3D"20%" height=3D"50" colspan=3D"2" align=3D"center"><small>=
+=0A=
+      =C4=E5=EA=EB=E0=F0=E8=F0=EE=E2=E0=ED=E8=E5<br>&nbsp;</small></td>=0A=
+   <td width=3D"20%" height=3D"50" colspan=3D"2" align=3D"center"><small>=
+=0A=
+      =D2=E0=EC=EE=E6=E5=ED=ED=EE=E5<br>=EE=F4=EE=F0=EC=EB=E5=ED=E8=E5 =C4=
+=D2</small></td>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+      =C7=E0=E2=E5=F0=F8=E5=ED=E8=E5<br>=F2=E0=EC=EE=E6=E5=ED=ED=EE=E3=EE<b=
+r>=F2=F0=E0=ED=E7=E8=F2=E0</small></td>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+       =C7=E0=E2=E5=F0=F8=E5=ED=E8=E5<br>=F2=E0=EC=EE=E6=E5=ED=ED=EE=E3=EE<=
+br>=EE=F4=EE=F0=EC=EB=E5=ED=E8=FF</small></td>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+      =CF=F0=E8=E1=FB=F2=E8=E5<br>=E0/=EC<br>&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" rowspan=3D"2" align=3D"center"><small>=
+=0A=
+       =C2=FB=E5=E7=E4<br>TIR<br>=E8=E7 =C7=D2=CA</small></td>=0A=
+</tr>=0A=
+<tr>=0A=
+   <td width=3D"10%" height=3D"8" align=3D"center"><small>=ED=E0=F7=E0=EB=
+=EE</small></td>=0A=
+   <td width=3D"9%" height=3D"1" align=3D"center"><small>=EE=EA=EE=ED=F7=E0=
+=ED=E8=E5</small></td>=0A=
+   <td width=3D"10%" height=3D"1" align=3D"center"><small>=ED=E0=F7=E0=EB=
+=EE</small></td>=0A=
+   <td width=3D"9%" height=3D"1" align=3D"center"><small>=EE=EA=EE=ED=F7=E0=
+=ED=E8=E5</small></td>=0A=
+</tr>=0A=
+<tr>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"DocAccept"=
+>&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"DeclStart"=
+>&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"DeclFinish=
+">&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CustClearS=
+tart">18.11.2022<br>16:27</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CustClearF=
+inish">&nbsp;</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"DeclFinish=
+">15.11.2022<br>12:16</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CustClearD=
+one">18.11.2022<br>16:27</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CarArrival=
+">14.11.2022<br>20:48</small></td>=0A=
+   <td width=3D"10%" height=3D"40" align=3D"center"><small id=3D"CagroIssue=
+">18.11.2022<br>17:31</small></td>=0A=
+</tr>=0A=
+</table><br><small>=CD=E0=F8 =F1=E0=E9=F2 <a href=3D"http://www.severtrans.=
+ru">www.severtrans.ru</a></small>=0A=
+</html>
+
+
+
+
+
+------=_=-_OpenGroupware_org_NGMime-1172-1669453285.811666-7--------
+
