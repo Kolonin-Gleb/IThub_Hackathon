@@ -1,0 +1,52 @@
+.filters {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 70px;
+}
+
+.filters-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 25px;
+}   
+
+.filters-block label {
+    
+}
+
+.filters-block select, .filters-block input {
+    width: 100%;
+    font-size: 16px;
+    background: #f2f2f2;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid #f2f2f2;
+    outline: none;
+    color: black;
+    transition: all .3s;
+} .filters-block select:hover, .filters-block input:hover{
+    border-color: var(--color);
+} .filters-block select:focus, .filters-block input:focus {
+    background: white;
+    border-color: var(--color);
+    box-shadow: 0 0 0 4px rgba(45, 141, 255, .2);
+} .filters-block select::placeholder, .filters-block input::placeholder {
+    color: #bfc4d1;
+}
+
+.filters-block button {
+    width: 100%;
+    font-size: 18px;
+    color: white;
+    background: var(--color);
+    border: none;
+    border-radius: var(--border-radius);
+    text-align: center;
+    padding: 10px 20px;
+} .filters-block button:active {
+    background: rgb(25, 121, 235);
+}

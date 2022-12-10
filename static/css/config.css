@@ -1,0 +1,75 @@
+html {
+    scroll-behavior: smooth;
+    overflow-anchor: none;
+    display: flex;
+    justify-content: center;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;  
+}
+
+/* @font-face {
+    font-family: 'Font';
+    src: url('../fonts/font.woff2') format('woff2');
+} */
+
+:root {
+    --color: rgb(45, 141, 255);
+    --border-radius: 5px;
+    --bg-dark: rgb(230, 230, 230);
+    --bg-light: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+body, button, html, input, select, textarea {
+    font-family: 'Arial';
+    color: black;
+}
+
+h1 {margin: 0; font-size: 25px; font-weight: normal;}
+h2 {margin: 0; font-size: 23px; font-weight: normal;}
+h3 {margin: 0; font-size: 20px; font-weight: normal;}
+h4 {margin: 0; font-weight: normal;}
+h5 {margin: 0; font-weight: normal;}
+p  {font-size: 18px; margin: 0;}
+a  {text-decoration: none;}
+
+
+body {
+    width: 1280px;
+    background: var(--bg-dark);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+main, header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+@media (max-width: 1280px) {
+    body {
+        width: 100%;
+    }
+}

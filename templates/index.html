@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% include "head.html" %}
+	</head>
+	<body>
+		{% include "header.html" %}
+		<main>
+			<div class="filters">
+				<div class="filters-block">
+					<label for="sender-select">Почта отправителя</label>
+					<select name="sender" id="sender-select">
+						<option disabled selected>Выберите почту отправителя</option>
+						<option value="1">info1@severtrans.ru</option>
+						<option value="2">auto@ost-term.ru</option>
+						<option value="3">no-reply@alfa-trans-smolensk.ru</option>
+					</select>
+				</div>
+				<div class="filters-block">
+					<label for="event-type-select">Тип события</label>
+					<select name="event-type" id="event-type-select">
+						<option disabled selected>Выберите тип события</option>
+						<option value="1">Прибытие</option>
+						<option value="2">Убытие</option>
+					</select>
+				</div>
+				<div class="filters-block">
+					<label for="date-input">Дата</label>
+					<input type="date" id="date-input" name="date">
+				</div>
+				<div class="filters-block">
+					<button>Поиск</button>
+				</div>
+			</div>
+			<div class="search-result">
+
+			</div>
+		</main>
+	</body>
+</html>
