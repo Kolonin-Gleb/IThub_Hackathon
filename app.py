@@ -45,7 +45,7 @@ def get_data():
 
 @app.route('/get_identificator_data', methods=['POST'])
 def get_identificator_data():
-    return open('eml/identificators.json', encoding='utf8')
+    return jsonify(open('eml/identificators.json', encoding='utf8'))
 
 
 if __name__ == "__main__":
