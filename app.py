@@ -1,10 +1,12 @@
 from flask import (
     Flask, 
     render_template, 
-    request
+    request, 
+    jsonify
 )
 
 from parser.parser import parse
+import json
 
 
 app = Flask(__name__, static_folder="static")
@@ -22,11 +24,23 @@ def get_data():
     sender     = request.form.get('sender')
     event_type = request.form.get('event_type')
     date       = request.form.get('date')
+    ident_1    = request.form.get('ident_1')
+    ident_2    = request.form.get('ident_2')
+    ident_3    = request.form.get('ident_3')
+    ident_4    = request.form.get('ident_4')
+    ident_5    = request.form.get('ident_5')
+    ident_6    = request.form.get('ident_6')
+    ident_7    = request.form.get('ident_7')
 
-    print(request.form)
+    date = ".".join(date.split('-')[::-1])
 
-    # return parse('eml/data.eml', sender, date)
-    return open('eml/data.json', encoding='utf8')
+    print()
+    print(['eml/data.eml', sender, date, event_type])
+    print()
+
+    filename = parse('eml/data.eml', sender, date, event_type)
+    data = open(filename, encoding='utf-8')
+    return jsonify(json.load(data))
 
 
 @app.route('/get_identificator_data', methods=['POST'])
