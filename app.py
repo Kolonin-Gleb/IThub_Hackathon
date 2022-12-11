@@ -47,7 +47,7 @@ def get_data():
 def get_identificator_data():
     file = open('eml/identificators.json', encoding='utf8')
     data = json.load(file)
-    return jsonify(data)
+    return data
 
 
 if __name__ == "__main__":
