@@ -9,6 +9,13 @@ var get_data = function() {
             sender:     get('#sender-select').value,
             event_type: get('#event-type-select').value,
             date:       get('#date-input').value,
+            ident_1:    get('#ident-1 input[name="ident-1"]').value,
+            ident_2:    get('#ident-2 input[name="ident-2"]').value,
+            ident_3:    get('#ident-3 input[name="ident-3"]').value,
+            ident_4:    get('#ident-4 input[name="ident-4"]').value,
+            ident_5:    get('#ident-5 input[name="ident-5"]').value,
+            ident_6:    get('#ident-6 input[name="ident-6"]').value,
+            ident_7:    get('#ident-7 input[name="ident-7"]').value
         },
         success: function (data) {
             show_data(data);
@@ -47,12 +54,12 @@ var show_data = function(data) {
                 <div>${msg['event_time']}</div>
             </div>
             <div class='msg-desc' id='msg-desc-${id}'>
-                <div><strong>Comnpany name:</strong> ${msg['comnpany_name']}</div>
-                <div><strong>Email adress:</strong> ${msg['email_adress']}</div>
-                <div><strong>Event time:</strong> ${msg['event_time']}</div>
-                <div><strong>Event type:</strong> ${msg['event_type']}</div>
-                <div><strong>Temporary storage:</strong> ${msg['temporary_storage']}</div>
-                <div><strong>Car number:</strong> ${msg['car_number']}</div>
+                <div><strong>Название компании:</strong> ${msg['comnpany_name']}</div>
+                <div><strong>Email:</strong> ${msg['email_adress']}</div>
+                <div><strong>Дата и время прибытия:</strong> ${msg['event_time']}</div>
+                <div><strong>Тип события:</strong> ${msg['event_type']}</div>
+                <div><strong>Склад временного хранения:</strong> ${msg['temporary_storage']}</div>
+                <div><strong>Номер транспортного средства:</strong> ${msg['car_number']}</div>
             </div>
         `
         id++;

@@ -1,0 +1,58 @@
+.identificators-container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.identificators {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.multiple-select {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #f2f2f2;
+    border-radius: var(--border-radius);
+}
+
+.multiple-select summary {
+    padding: 8px 12px;
+    background-color: #f2f2f2;
+    border-radius: var(--border-radius);
+}
+
+.multiple-select-dropdown {
+    position: absolute;
+    margin-top: 10px;
+    min-width: 100%;
+    background-color: white;
+    border-radius: var(--border-radius);
+    border: 1px solid rgb(160, 160, 160);
+    z-index: 100;
+}
+
+.multiple-select label {
+    margin: 0;
+    display: block;
+    border-radius: var(--border-radius);
+}
+
+.multiple-select label:hover {
+    background-color: rgb(224, 224, 224);
+}
+
+.multiple-select label > input + .content {
+    padding: 5px 10px;
+    display: block;
+    cursor: pointer;
+}
+
+.multiple-select label > input:checked + .content {
+    background-color: rgb(224, 224, 224);
+}

@@ -1,0 +1,23 @@
+<div class="filters">
+    <div class="filters-block">
+        <label for="sender-select">Почта отправителя</label>
+        <select name="sender" id="sender-select" onchange="add_identificators(this.value)">
+            <option value="" selected disabled>Выбрать</option>
+            <option value="1">info1@severtrans.ru</option>
+            <option value="2">auto@ost-term.ru</option>
+            <option value="3">no-reply@alfa-trans-smolensk.ru</option>
+        </select>
+    </div>
+    <div class="filters-block">
+        <label for="event-type-select">Тип события</label>
+        <select name="event-type" id="event-type-select">
+            <option value="" selected disabled>Выбрать</option>
+            <option value="1">Прибытие</option>
+            <option value="2">Убытие</option>
+        </select>
+    </div>
+    <div class="filters-block">
+        <label for="date-input">Дата</label>
+        <input type="date" id="date-input" name="date">
+    </div>
+</div>

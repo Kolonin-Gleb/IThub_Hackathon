@@ -14,10 +14,6 @@
     gap: 25px;
 }   
 
-.filters-block label {
-    
-}
-
 .filters-block select, .filters-block input {
     width: 100%;
     font-size: 16px;
@@ -28,9 +24,9 @@
     outline: none;
     color: black;
     transition: all .3s;
-} .filters-block select:hover, .filters-block input:hover{
+} .filters-block select:hover, .filters-block input:hover, details:hover{
     border-color: var(--color);
-} .filters-block select:focus, .filters-block input:focus {
+} .filters-block select:focus, .filters-block input:focus, details:focus {
     background: white;
     border-color: var(--color);
     box-shadow: 0 0 0 4px rgba(45, 141, 255, .2);
@@ -46,7 +42,7 @@
     border: none;
     border-radius: var(--border-radius);
     text-align: center;
-    padding: 10px 20px;
+    padding: 8px 15px;
 } .filters-block button:active, .btn:active {
     background: rgb(25, 121, 235);
 }
@@ -120,4 +116,9 @@
 
 .message div:nth-child(1) {width: 60%;}
 .message div:nth-child(2) {width: 20%;}
-.message div:nth-child(3) {width: 20%;}
+.message div:nth-child(3) {width: 20%;} 
+
+
+.search-btn {
+    display: none;
+}
