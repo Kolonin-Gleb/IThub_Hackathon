@@ -49,12 +49,12 @@ var show_data = function(data) {
     Array.from(data).forEach(msg => {
         result_msg.innerHTML += `
             <div class='message' onclick='open_msg("#msg-desc-${id}")'>
-                <div>${msg['comnpany_name']}</div>
+                <div>${msg['company_name']}</div>
                 <div>${msg['event_type']}</div>
                 <div>${msg['event_time']}</div>
             </div>
             <div class='msg-desc' id='msg-desc-${id}'>
-                <div><strong>Название компании:</strong> ${msg['comnpany_name']}</div>
+                <div><strong>Название компании:</strong> ${msg['company_name']}</div>
                 <div><strong>Email:</strong> ${msg['email_adress']}</div>
                 <div><strong>Дата и время прибытия:</strong> ${msg['event_time']}</div>
                 <div><strong>Тип события:</strong> ${msg['event_type']}</div>

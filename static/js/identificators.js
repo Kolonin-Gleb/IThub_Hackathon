@@ -14,7 +14,7 @@ var set_identificators = function(value, data) {
         Array.from(block_data).forEach(cur_data => {
             let cur_data_origin = cur_data;
             cur_data = cur_data.replace('<', '##(').replace('>', ')##');
-            block.innerHTML += ` 
+            block.innerHTML += `
             <label>
                 <input type="checkbox" hidden name="ident-${i}" value='${cur_data}'>
                 <span class="content">${cur_data_origin}</span>
