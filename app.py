@@ -37,10 +37,7 @@ def get_data():
 
     filename = parse('eml/data.eml', sender, date, event_type, ident_1, ident_2, ident_3, ident_4, ident_5, ident_6, ident_7)
     data = open(filename, encoding='utf-8')
-
-    
-
-    return jsonify(json.load(data))
+    return jsonify(json.load(data), filename.split('/')[1])
 
 
 @app.route('/get_identificator_data', methods=['POST'])

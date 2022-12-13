@@ -1,6 +1,36 @@
 "use strict";
 
+
+var isAll = function() {
+    let arr = [
+        get('#sender-select').value,
+        get('#event-type-select').value,
+        get('#date-input').value,
+        get('#ident-1 input[name="ident-1"]').value,
+        get('#ident-2 input[name="ident-2"]').value,
+        get('#ident-3 input[name="ident-3"]').value,
+        get('#ident-4 input[name="ident-4"]').value,
+        get('#ident-5 input[name="ident-5"]').value,
+        get('#ident-6 input[name="ident-6"]').value,
+        get('#ident-7 input[name="ident-7"]').value
+    ]
+
+    let true_or_false = true;
+    arr.forEach(elem => {
+        if (elem.value == undefined) {
+            true_or_false = false;
+        }
+    });
+
+    return true_or_false;
+}
+
+
 var get_data = function() {
+    // if (!isAll()) {
+    //     return alert('Не все поля заполнены!');
+    // }
+
     $.ajax({
         url: '/get_data',
         type: 'POST',
@@ -27,12 +57,15 @@ var get_data = function() {
 }
 
 var show_data = function(data) {
+    let path = data[1];
+    data = data[0];
+
     let result = get('.search-result');
 
     result.innerHTML = `
         <div class='caption'>
             <h2>Результаты поиска</h2>
-            <a class='btn' href="/eml/data.json" download>Скачать JSON</a>
+            <a class='btn' href="/download/${path}">Скачать JSON</a>
         </div>
 		<div class='messages'>
             <div class='message bold'>

@@ -1,5 +1,6 @@
 
 var set_identificators = function(value, data) {
+
     let search = get('.search-btn');
     search.style.display = 'flex';
 
